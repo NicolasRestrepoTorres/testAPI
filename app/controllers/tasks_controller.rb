@@ -1,6 +1,14 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :update, :destroy]
-
+  before_action :authenticate
+  
+  
+  protected
+  def authenticate
+    authenticate_or_request_with_http_token do |token, options|
+      User.find_by(auth_token: token)
+    end
+  end
   # GET /tasks
   def index
     @tasks = Task.all
