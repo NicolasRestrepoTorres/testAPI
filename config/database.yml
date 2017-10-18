@@ -14,6 +14,11 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
+
+
+
+
+
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -82,6 +87,9 @@ test:
 #
 production:
   <<: *default
-  database: testAPI_production
-  username: testAPI
+  host: ec2-54-225-88-199.compute-1.amazonaws.com
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['TESTAPI_DATABASE_PASSWORD'] %>
+  port: 5432
+
