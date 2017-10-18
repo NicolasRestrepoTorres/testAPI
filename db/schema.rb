@@ -20,8 +20,12 @@ ActiveRecord::Schema.define(version: 20171018035434) do
     t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
+    t.string "email"
+    t.string "password_digest"
     t.string "name"
     t.integer "priority", default: 0
+    t.index ["token"], name: "index_tasks_on_token"
   end
 
   create_table "users", force: :cascade do |t|
