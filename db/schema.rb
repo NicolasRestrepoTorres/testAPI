@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017193106) do
+ActiveRecord::Schema.define(version: 20171018031602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20171017193106) do
     t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "priority", default: 0
+    t.string "token"
+    t.string "email"
+    t.string "password_digest"
+    t.index ["token"], name: "index_tasks_on_token"
   end
 
 end
