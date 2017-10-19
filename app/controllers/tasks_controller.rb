@@ -15,13 +15,25 @@ class TasksController < ApplicationController
 
   # POST /tasks
   def create
-    @task = Task.new(task_params)
-
-    if @task.save
-      render json: @task, status: :created, location: @task
-    else
-      render json: @task.errors, status: :unprocessable_entity
+    params[:task][:status].downcase!
+    valid_status = true
+    @task = Task.new(task_params) rescue valid_status = false
+    puts valid_status
+    unless valid_status
+    render json: {
+      message: "The status is not valid, use: active/done",
+      status: 500,
+    }.to_json
     end
+    
+    if valid_status   
+      if @task.save
+        render json: @task, status: :created, location: @task
+      else
+        render json: @task.errors, status: :unprocessable_entity
+      end
+    end
+
   end
 
   # PATCH/PUT /tasks/1
@@ -46,6 +58,6 @@ class TasksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params.require(:task).permit(:active, :done, :name, :priority)
+      params.require(:task).permit(:status, :name, :priority)
     end
 end

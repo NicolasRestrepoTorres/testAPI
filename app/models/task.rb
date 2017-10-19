@@ -1,3 +1,3 @@
 class Task < ApplicationRecord
-    has_secure_password
+    enum status: [ :active, :done ]
 end
