@@ -1,6 +1,6 @@
-class TasksController < ApplicationController
+class TasksController < ApiController
   before_action :set_task, only: [:show, :update, :destroy]
-
+  before_action :require_login
   # GET /tasks
   def index
     @tasks = Task.all
