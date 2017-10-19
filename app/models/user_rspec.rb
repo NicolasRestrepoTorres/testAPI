@@ -1,0 +1,2 @@
+class UserRspec < ApplicationRecord
+end
