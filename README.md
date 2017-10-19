@@ -1,24 +1,14 @@
-# README
+## API for tasks
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://testapi3.herokuapp.com/
 
-Things you may want to cover:
+### Descrption
 
-* Ruby version
+This is a RESTful API  built in Ruby on Rails intended to check the status
+of a certain tasks and other information related, this API uses token authentication
+generated in the login of each registered user by the administrator of this API.
 
-* System dependencies
+Version: 1.0
 
-* Configuration
+### Developer: Nicolas Restrepo Torres
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
